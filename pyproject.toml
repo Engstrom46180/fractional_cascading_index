@@ -1,6 +1,6 @@
 [project]
 name = "fractional-cascading-index"
-version = "0.1.0"
+version = "0.1.1"
 description = "A layered set of sorted arrays sharing sampled elements between adjacent layers to answer multi-level binary searches in a single logarithmic pass."
 requires-python = ">=3.10"
 dependencies = []
