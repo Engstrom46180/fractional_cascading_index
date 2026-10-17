@@ -36,3 +36,10 @@ The trade-off: construction is `O(n)` in space and time (one merged array per la
 - Duplicate keys *within* a single layer resolve to the leftmost matching index.
 
 The implementation includes a per-layer sanity check against the naive `bisect_left` answer. If the cascaded path ever disagrees (which can happen with adversarial duplicate patterns in adjacent layers), it silently falls back to the naive result. You always get the correct answer; the speedup holds on the inputs the structure is designed for.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
